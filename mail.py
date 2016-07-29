@@ -18,8 +18,18 @@ data = requests.get('https://graph.facebook.com/v2.6/385662361445807/feed?since=
 
 data_json = json.loads(data.text)
 
+ignore_list = [
+    'sublet',
+    'sublease',
+    'ladies',
+    'girl',
+    'female',
+    'bothell',
+    'tacoma'
+]
+             
 for x in reversed(range(len(data_json['data']))):
-    if re.search('sublet|female|girl|sublease',data_json['data'][x]['message'],re.IGNORECASE):
+    if re.search('|'.join(ignore_list),data_json['data'][x]['message'],re.IGNORECASE):
         data_json['data'].pop(x)
 
 tmpl = Template('''
