@@ -20,7 +20,7 @@ data_json = json.loads(data.text)
 
 ignore_list = [
     'sublet',
-    'sublease',
+    'subleas',
     'ladies',
     'girl',
     'female',
